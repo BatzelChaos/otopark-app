@@ -1,0 +1,21 @@
+<root>
+	<floor1>
+		<A1>
+			Porsche
+		</A1>
+		<A2>
+			Ferrari
+		</A2>
+		<B1>
+			FALSE
+		</B1>
+		<B2>
+			FALSE
+		</B2>
+	</floor1>
+	<floor2>
+		<A1>
+			TRUE
+		</A1>
+	</floor2>
+</root>
