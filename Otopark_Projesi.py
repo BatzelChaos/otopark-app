@@ -4,8 +4,8 @@ Otopark Projesi - Ana Dosya
 Bu dosya, otopark sistemi için başlangıç noktasıdır.
 Yeni modüler yapı (models.py, simulator.py, app.py) kullanılmaktadır.
 
-Başlangıç sınıfı (eski versiyon) eğitim amaçlı burada tutulmuştur.
-Üretim ve gerçek uygulamalar için models.py kullanınız.
+Başlangıç sınıfı (eski versiyon) öğrenme amaçlı burada tutulmuştur.
+Üretim ve gerçek uygulamalar için models.py kullanılacaktır.
 """
 
 class OtoparkBasit:
