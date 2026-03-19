@@ -414,7 +414,7 @@ print(otopark.bos_alan_sayisi())  # Kaç boş alan kaldığını göster
 
 ## 🔮 Gelecek Özellikler
 
-- [ ] Veritabanı entegrasyonu (SQLite/PostgreSQL)
+- [ ] Veritabanı entegrasyonu (SQLite/PostgreSQL). Bu konuda bilgimiz oldukça az.
 - [ ] Web arayüzü (HTML/CSS/JavaScript)
 - [ ] Fatura sistemi (ücretlendirme)
 - [ ] Gerçek zamanlı bildirimler (WebSocket)
