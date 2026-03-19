@@ -379,7 +379,7 @@ curl http://127.0.0.1:5000/api/araclar
 └─────────────────────────┘
 ```
 
-## 🎯 Görev Dağılımı (4 Kişi için)
+## 🎯 Görev Dağılımı (3 Kişi için)
 
 | Görev | Kişi | Açıklama |
 |-------|------|----------|
