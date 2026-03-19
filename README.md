@@ -381,13 +381,15 @@ curl http://127.0.0.1:5000/api/araclar
 
 ## 🎯 Görev Dağılımı (3 Kişi için)
 
-| Görev | Kişi | Açıklama |
-|-------|------|----------|
+| Görev | Görevi Üstlenenin Olduğu Konum | Açıklama |
+|-------|--------------------------------|----------|
 | **Planlama** | Proje Yöneticisi | Proje amacı, kapsam, gereksinim analizi |
 | **Tasarım** | Tasarımcı | Veri yapıları, UML diyagramları, akış şemaları |
 | **Back-End** | Backend Geliştirici | Python kodları, API, simülasyon |
 | **Front-End & Sunum** | Frontend Geliştirici | Web arayüzü, dokümantasyon, demo |
-
+Bunlar yapılması gereken görevler bütünüdür. Bazı görevler tek kişi tarafından yürütülebileceği gibi 
+kimi görevler ortak olabilecek ve kimimiz fazladan görev üstlenecektir. Burada aynı zamanda görevle uğraşanın 
+bulunduğu konum belirtilmiştir.
 ## 📝 Kodlama Standartları
 
 - **Isimlendirme**: snake_case (değişkenler), PascalCase (sınıflar)
@@ -431,7 +433,7 @@ Bu proje eğitim amaçlı oluşturulmuştur.
 - Backend Geliştirici
 - Frontend Geliştirici
 - Sistem Tasarımcısı
-
+Görev paylaşımında bazı görevler ortak olup kimimiz fazladan görev üstlenebilir.
 ---
 
 **Son Güncelleme:** Şubat 28, 2026
