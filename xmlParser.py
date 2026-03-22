@@ -10,6 +10,12 @@ A1 = root.find('.//A1').text
 print(f"Is there a car: {A1}")
 
 
+
+print("XML başarıyla okundu")
+
+# TODO: Farklı alanlar (A2, A3...) da okunacak
+# TODO: Bu veri otopark sistemine bağlanacak
+
 #root = etree.Element("root")
 #child1 = etree.SubElement(root, "child1")
 
