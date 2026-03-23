@@ -421,7 +421,6 @@ print(otopark.bos_alan_sayisi())  # Kaç boş alan kaldığını göster
 - [ ] Fatura sistemi (ücretlendirme)
 - [ ] Gerçek zamanlı bildirimler (WebSocket)
 - [ ] Mobil uygulama (iOS/Android)
-- [ ] Yapay zeka ile araç tanıma
 
 ## 📄 Lisans
 
