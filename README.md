@@ -387,6 +387,7 @@ curl http://127.0.0.1:5000/api/araclar
 | **Tasarım** | Tasarımcı | Veri yapıları, UML diyagramları, akış şemaları |
 | **Back-End** | Backend Geliştirici | Python kodları, API, simülasyon |
 | **Front-End & Sunum** | Frontend Geliştirici | Web arayüzü, dokümantasyon, demo |
+
 Bunlar yapılması gereken görevler bütünüdür. Bazı görevler tek kişi tarafından yürütülebileceği gibi 
 kimi görevler ortak olabilecek ve kimimiz fazladan görev üstlenecektir. Burada aynı zamanda görevle uğraşanın 
 bulunduğu konum belirtilmiştir.
