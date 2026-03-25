@@ -1,0 +1,30 @@
+<root>
+	<floor1>
+		<A1>
+			TRUE
+		</A1>
+		<A2>
+			TRUE
+		</A2>
+		<B1>
+			FALSE
+		</B1>
+		<B2>
+			FALSE
+		</B2>
+	</floor1>
+	<floor2>
+		<A1>
+			TRUE
+		</A1>
+		<B2>
+			FALSE
+		</B2>
+		<B3>
+			TRUE
+		</B3>
+		<C1>
+			FALSE
+		</C1>
+	</floor2>
+</root>
