@@ -1,10 +1,10 @@
 <root>
 	<floor1>
 		<A1>
-			Porsche
+			TRUE
 		</A1>
 		<A2>
-			Ferrari
+			TRUE
 		</A2>
 		<B1>
 			FALSE
@@ -17,5 +17,14 @@
 		<A1>
 			TRUE
 		</A1>
+		<B2>
+			FALSE
+		</B2>
+		<B3>
+			TRUE
+		</B3>
+		<C1>
+			FALSE
+		</C1>
 	</floor2>
 </root>
