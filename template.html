@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>
+			PARKINGS
+		</title>
+	</head>
+	<body>
+		<h1>Parking</h1>
+		<ul>
+			{% for spot in spots %}
+			<li>
+				{{spot.name}}:{{spot.status}}
+			</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
