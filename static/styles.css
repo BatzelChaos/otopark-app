@@ -35,3 +35,19 @@ footer {
   background: #e8edf4;
   font-size: 0.9rem;
 }
+
+.car
+{
+	width:50px;
+	height:50px;
+	clip-path: polygon(30% 15%, 30% 20%, 25% 20%, 25% 35%, 30% 35%, 30% 65%, 25% 65%, 25% 80%, 30% 80%, 30% 85%,
+						70% 85%, 70% 80%, 75% 80%, 75% 65%, 70% 65%, 70% 35%, 75% 35%, 75% 20%, 70% 20%, 70% 15%);
+}
+.parkinglot
+{
+	display:grid;
+	grid-template-columns: repeat;
+}
+
+.red { background:red; border-bottom-color:red; }
+.green { background:green; border-bottom-color:green; }

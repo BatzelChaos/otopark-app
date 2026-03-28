@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>XML Viewer</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+<h1>Vacant Parking Spots</h1>
+
+<ul>
+	{% macro render_node(node) %}
+		<li>
+			<strong>{{ node.tag }}</strong>
+
+			{% if node.value == "true" %}
+				<div class="car red"></div>
+			{% elif node.value == "false" %}
+				<div class="car green"></div>
+			{% endif %}
+
+			{% if node.attributes %}
+				<em>
+					(
+					{% for k, v in node.attributes.items() %}
+						{{ k }}={{ v }}
+					{% endfor %}
+					)
+				</em>
+			{% endif %}
+
+			{% if node.children %}
+				<ul>
+					{% for child in node.children %}
+						{{ render_node(child) }}
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endmacro %}
+	{{ render_node(node) }}
+</ul>
+
+</body>
+</html>
