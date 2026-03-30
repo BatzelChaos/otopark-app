@@ -1,4 +1,3 @@
-[README.md](https://github.com/user-attachments/files/26067038/README.md)
 # Otopark Projesi - Parking Lot Management System
 
 Otopark Projesi, otoparkta boş ve dolu alanların yazılım aracılığıyla yönetilmesini sağlayan bir Python + Flask uygulamasıdır.
@@ -28,6 +27,7 @@ Otopark_Projesi/
 ├── simulator.py            # Simülasyon sistemi
 ├── app.py                  # Flask Web API
 ├── requirements.txt        # Proje bağımlılıkları
+├── test_park_duration.py   # Park süresi testi
 └── README.md              # Bu dosya
 ```
 
@@ -163,7 +163,7 @@ Araç otoparka girer.
   "basarili": true,
   "plaka": "34-ABC-1234",
   "alan_id": 5,
-  "mesaj": "Araç 34-ABC-1234 5. alana park edildi.",
+  "mesaj": "Araç 34-ABC-1234 5. alana başarıyla park edildi.",
   "otopark_durumu": {
     "otopark_adi": "Çankırı Merkez Otopark",
     "toplam_kapasite": 30,
@@ -355,7 +355,7 @@ curl http://127.0.0.1:5000/api/araclar
 │ - arac_gecmisi          │
 ├─────────────────────────┤
 │ + arac_ekle()           │
-│ + arac_cikar()          │
+│ + arac_cikar()           │
 │ + bos_alan_sayisi()     │
 │ + dolu_alan_sayisi()    │
 │ + doluluk_orani()       │
@@ -379,18 +379,15 @@ curl http://127.0.0.1:5000/api/araclar
 └─────────────────────────┘
 ```
 
-## 🎯 Görev Dağılımı (3 Kişi için)
+## 🎯 Görev Dağılımı (4 Kişi için)
 
-| Görev | Görevi Üstlenenin Olduğu Konum | Açıklama |
-|-------|--------------------------------|----------|
+| Görev | Kişi | Açıklama |
+|-------|------|----------|
 | **Planlama** | Proje Yöneticisi | Proje amacı, kapsam, gereksinim analizi |
 | **Tasarım** | Tasarımcı | Veri yapıları, UML diyagramları, akış şemaları |
 | **Back-End** | Backend Geliştirici | Python kodları, API, simülasyon |
 | **Front-End & Sunum** | Frontend Geliştirici | Web arayüzü, dokümantasyon, demo |
 
-Bunlar yapılması gereken görevler bütünüdür. Bazı görevler tek kişi tarafından yürütülebileceği gibi 
-kimi görevler ortak olabilecek ve kimimiz fazladan görev üstlenecektir. Burada aynı zamanda görevle uğraşanın 
-bulunduğu konum belirtilmiştir.
 ## 📝 Kodlama Standartları
 
 - **Isimlendirme**: snake_case (değişkenler), PascalCase (sınıflar)
@@ -417,11 +414,12 @@ print(otopark.bos_alan_sayisi())  # Kaç boş alan kaldığını göster
 
 ## 🔮 Gelecek Özellikler
 
-- [ ] Veritabanı entegrasyonu (SQLite/PostgreSQL). Bu konuda bilgimiz oldukça az.
+- [ ] Veritabanı entegrasyonu (SQLite/PostgreSQL)
 - [ ] Web arayüzü (HTML/CSS/JavaScript)
 - [ ] Fatura sistemi (ücretlendirme)
 - [ ] Gerçek zamanlı bildirimler (WebSocket)
 - [ ] Mobil uygulama (iOS/Android)
+- [ ] Yapay zeka ile araç tanıma
 
 ## 📄 Lisans
 
@@ -433,7 +431,7 @@ Bu proje eğitim amaçlı oluşturulmuştur.
 - Backend Geliştirici
 - Frontend Geliştirici
 - Sistem Tasarımcısı
-Görev paylaşımında bazı görevler ortak olup kimimiz fazladan görev üstlenebilir.
+
 ---
 
 **Son Güncelleme:** Şubat 28, 2026
