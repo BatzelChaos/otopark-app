@@ -1,34 +1,45 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Otoparkim Nerde?</title>
-  <link rel="stylesheet" href="css/styles.css" type="text/css">
+	<title>XML Viewer</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-  <header>
-    <h1>OTOPARKIM NEREDE?</h1>
-    <p>Anlasmali tum otoparklarda hizlica bos yer bul!</p>
-  </header>
-  <main>
-    <section>
-      <h2>Yakindaki otoparklar</h2>
-      <p>otopark 1</p>
-      <p>otopark 2</p>
-      <p>birimiz burayi gps e baglicaz</p>
-    </section>
-    <section>
-      <h2>Projects</h2>
-      <ul>
-        <li>Portfolio landing page</li>
-        <li>Product showcase</li>
-        <li>Responsive blog layout</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>Built with ❤️ using HTML & CSS.</p>
-  </footer>
+
+<h1>Vacant Parking Spots</h1>
+
+<ul>
+	{% macro render_node(node) %}
+		<li>
+			<strong>{{ node.tag }}</strong>
+
+			{% if node.value == "true" %}
+				<div class="car red"></div>
+			{% elif node.value == "false" %}
+				<div class="car green"></div>
+			{% endif %}
+
+			{% if node.attributes %}
+				<em>
+					(
+					{% for k, v in node.attributes.items() %}
+						{{ k }}={{ v }}
+					{% endfor %}
+					)
+				</em>
+			{% endif %}
+
+			{% if node.children %}
+				<ul>
+					{% for child in node.children %}
+						{{ render_node(child) }}
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</li>
+	{% endmacro %}
+	{{ render_node(node) }}
+</ul>
+
 </body>
 </html>

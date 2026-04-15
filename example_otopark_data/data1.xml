@@ -1,4 +1,10 @@
 <root>
+	<grid rows="3" cols="4">
+		<cell row="1" col="1" status="free">A1</cell>
+		<cell row="1" col="2" status="occupied">A2</cell>
+		<cell row="2" col="3" status="occupied">B3</cell>
+		<cell row="2" col="3" status="occupied">B3</cell>
+	</grid>
 	<floor1>
 		<A1>
 			true
