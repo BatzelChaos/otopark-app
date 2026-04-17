@@ -6,9 +6,14 @@
 <body>
 
 	<h1>
-		OTOPARK A - KAT 1
+		OTOPARK A - KAT {{level}}
 	</h1>
-	<href></href>
+
+<div class="stats">
+	<a href="/">Geri Don</a>
+	<p>Toplam Park Sayisi: {{stats.total_cells}}</p>
+	<p>Park Dolulugu: {{stats.percentage_parking|round(2)}}%</p>
+</div>
 
 <div class="parkinglot" style="--cols:{{node.attributes.get('cols',5)|int}}; --rows:{{node.attributes.get('rows',5)|int}};">
 	{% for cell in cells %}
@@ -17,9 +22,9 @@
 				grid-column: {{ cell.attributes.col }};">
 			
 			{% if cell.attributes.status == "occupied" %}
-				<div class="car red"></div>
+				<div class="car red"> {{cell.value}} </div>
 			{% else %}
-				<div class="car green"></div>
+				<div class="car green"> {{cell.value}} </div>
 			{% endif %}
 			
 		</div>
