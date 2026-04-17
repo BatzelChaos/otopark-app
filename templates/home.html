@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+	</head>
+	<body>
+		<h1>Otopark Katları</h1>
+		{% for floor in floors %}
+			<a href="/floor/{{floor.level}}">
+				Kat {{floor.level}}
+			</a>
+			 - {{"%.2f"|format(floor.percentage_parking|float)}}% 
+			 <div class="progressbar">
+				<div class="progressbar_fill" style="width: {{ floor.percentage_parking|default(0)|int}}%">
+				</div>
+				
+			 </div>
+			<br>
+		{% endfor %}
+	</body>
+</html>

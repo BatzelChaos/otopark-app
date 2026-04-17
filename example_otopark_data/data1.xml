@@ -1,36 +1,28 @@
 <root>
-	<grid rows="3" cols="4">
-		<cell row="1" col="1" status="free">A1</cell>
-		<cell row="1" col="2" status="occupied">A2</cell>
-		<cell row="2" col="3" status="occupied">B3</cell>
-		<cell row="2" col="3" status="occupied">B3</cell>
-	</grid>
-	<floor1>
-		<A1>
-			true
-		</A1>
-		<A2>
-			true
-		</A2>
-		<B1>
-			false
-		</B1>
-		<B2>
-			false
-		</B2>
-	</floor1>
-	<floor2>
-		<A1>
-			true
-		</A1>
-		<B2>
-			false
-		</B2>
-		<B3>
-			true
-		</B3>
-		<C1>
-			false
-		</C1>
-	</floor2>
+	
+		<floor level="1">
+			<grid rows="3" cols="4">
+				<cell row="1" col="1" status="free">A1</cell>
+				<cell row="1" col="2" status="occupied">A2</cell>
+				<cell row="1" col="3" status="free">A3</cell>
+				<cell row="1" col="4" status="free">A4</cell>
+				<cell row="1" col="6" status="free">A6</cell>
+				<cell row="2" col="2" status="occupied">B2</cell>
+				<cell row="2" col="3" status="occupied">B3</cell>
+				<cell row="3" col="3" status="occupied">C3</cell>
+				<cell row="4" col="1" status="occupied">D1</cell>
+				<cell row="4" col="2" status="occupied">D2</cell>
+				<cell row="5" col="5" status="occupied">E5</cell>
+				<cell row="5" col="6" status="free">E6</cell>
+			</grid>
+		</floor>
+		<floor level="2">
+			<grid rows="3" cols="4">
+				<cell row="1" col="1" status="occupied">A1</cell>
+				<cell row="1" col="2" status="free">A2</cell>
+				<cell row="2" col="3" status="free">B3</cell>
+				<cell row="3" col="3" status="occupied">C3</cell>
+			</grid>
+		</floor>
+	
 </root>
