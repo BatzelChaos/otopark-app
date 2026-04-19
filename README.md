@@ -419,19 +419,13 @@ print(otopark.bos_alan_sayisi())  # Kaç boş alan kaldığını göster
 - [ ] Fatura sistemi (ücretlendirme)
 - [ ] Gerçek zamanlı bildirimler (WebSocket)
 - [ ] Mobil uygulama (iOS/Android)
-- [ ] Yapay zeka ile araç tanıma
 
 ## 📄 Lisans
 
 Bu proje eğitim amaçlı oluşturulmuştur.
 
 ## 👥 Yazarlar
-
-- Proje Yöneticisi
-- Backend Geliştirici
-- Frontend Geliştirici
-- Sistem Tasarımcısı
-
+Erenalp Demir
+Fatih Kerem Arslan
+Kadir Umut Akbaş
 ---
-
-**Son Güncelleme:** Şubat 28, 2026
