@@ -19,7 +19,26 @@ def get_cells(node):
 	for child in node["children"]:
 		cells.extend(get_cells(child))
 	return cells
+
+def get_floors(root):
+	floors = []
+	for floor in root.findall("floor"):
+		level = floor.attrib.get("level")
+		grid_node = floor.find("grid")
+		if grid_node is None:
+			continue
+		data = parsenode(grid_node)
+		cells = get_cells(data)
 	
+		stats = stat_calculation(cells)
+	
+		floors.append({
+			"level": level,
+			"percentage_parking": stats["percentage_parking"],
+			"total_cells": stats["total_cells"]
+			})
+	return floors
+
 def get_otoparklar():
     otoparklar = [
         {"id": 1, "isim": "Ana Otopark", "dosya": "data1.xml"},
@@ -39,6 +58,8 @@ def get_otoparklar():
 
             for floor in root.findall("floor"):
                 grid_node = floor.find("grid")
+                if grid_node is None:
+                	continue
                 data = parsenode(grid_node)
                 cells = get_cells(data)
 
@@ -56,63 +77,51 @@ def get_otoparklar():
 
 @app.route("/")
 def otopark_listesi():
-    otoparklar = get_otoparklar()  
-    return render_template("otoparklar.html", otoparklar=otoparklar)
+	otoparklar = get_otoparklar()
+	
+	return render_template("otoparklar.html", otoparklar=otoparklar)
 
 @app.route("/otopark/<int:id>")
 def otopark_detay(id):
-    otoparklar = get_otoparklar()
-    otopark = next((o for o in otoparklar if o["id"] == id), None)
+	otoparklar = get_otoparklar()
+	otopark = next((o for o in otoparklar if o["id"] == id), None)
+	
+	dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
+	tree = ET.parse(dosya_yolu)
+	root = tree.getroot()
+	
+	if not otopark:
+		return "Otopark bulunamadı", 404
 
-    if not otopark:
-        return "Otopark bulunamadı", 404
+	floors_percentage_data = []
+	
+	floors_percentage_data = get_floors(root)
 
-    dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
-    tree = ET.parse(dosya_yolu)
-    root = tree.getroot()
-
-    floors_percentage_data = []
-
-    for floor in root.findall("floor"):
-        level = floor.attrib.get("level")
-        grid_node = floor.find("grid")
-        data = parsenode(grid_node)
-        cells = get_cells(data)
-
-        stats = stat_calculation(cells)
-
-        floors_percentage_data.append({
-            "level": level,
-            "percentage_parking": stats["percentage_parking"],
-            "total_cells": stats["total_cells"]
-        })
-
-    return render_template("home.html", floors=floors_percentage_data, id=id)
-
-
+	return render_template("home.html", floors=floors_percentage_data, id=id)
+    
 @app.route("/otopark/<int:id>/floor/<int:level>")
 def show_floor(id, level):
 
-    otoparklar = get_otoparklar()
-    otopark = next((o for o in otoparklar if o["id"] == id), None)
+	otoparklar = get_otoparklar()
+	otopark = next((o for o in otoparklar if o["id"] == id), None)
 
-    if not otopark:
-        return "Otopark bulunamadı", 404
+	if not otopark:
+		return "Otopark bulunamadı", 404
 
-    dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
-    tree = ET.parse(dosya_yolu)
-    root = tree.getroot()
+	dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
+	tree = ET.parse(dosya_yolu)
+	root = tree.getroot()
 
-    floor = root.find(f"./floor[@level='{level}']")
-    if floor is None:
-        return "Bu kat yok", 404
+	floor = root.find(f"./floor[@level='{level}']")
+	if floor is None:
+		return "Bu kat yok", 404
 
-    grid_node = floor.find("grid")
-    data = parsenode(grid_node)
-    cells = get_cells(data)
-    stats = stat_calculation(cells)
+	grid_node = floor.find("grid")
+	data = parsenode(grid_node)
+	cells = get_cells(data)
+	stats = stat_calculation(cells)
 
-    return render_template("index.html", node=data, cells=cells, level=level, stats=stats)
+	return render_template("index.html", node=data, cells=cells, level=level, stats=stats, otopark=otopark)
 
 
 
