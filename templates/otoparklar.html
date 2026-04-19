@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+	<title>Otopark Listesi</title>
+</head>
+<body>
+	<h1>Otopark Listesi</h1>
+	
+	<br>
+	
+	<ul>
+		{% for otopark in otoparklar %}
+			<li>
+				<a href="/otopark/{{ otopark.id }}">
+					{{ otopark.isim }} - {{ otopark.doluluk }}%
+					<div class="progressbar">
+						<div class="progressbar_fill" style="width: {{ otopark.doluluk|default(0)|int}}%">
+							<br>
+						</div>
+			 		</div>
+			 		<br>
+				</a>
+			</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

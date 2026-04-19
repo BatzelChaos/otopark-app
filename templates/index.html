@@ -10,7 +10,10 @@
 	</h1>
 
 <div class="stats">
-	<a href="/">Geri Don</a>
+	<a href="/otopark/{{ otopark.id }}">Geri Don</a>
+	<br>
+	<a href="/">Otopark Listesi</a>
+	<br>
 	<p>Toplam Park Sayisi: {{stats.total_cells}}</p>
 	<p>Park Dolulugu: {{stats.percentage_parking|round(2)}}%</p>
 </div>
@@ -26,7 +29,6 @@
 			{% else %}
 				<div class="car green"> {{cell.value}} </div>
 			{% endif %}
-			
 		</div>
 	{% endfor %}
 </div>

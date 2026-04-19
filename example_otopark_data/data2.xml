@@ -1,11 +1,11 @@
 <root>
 	
 		<floor level="1">
-			<grid rows="5" cols="5">
+			<grid rows="5" cols="6">
 				<cell row="1" col="1" status="free">A1</cell>
 				<cell row="1" col="2" status="occupied">A2</cell>
-				<cell row="1" col="3" status="free">A3</cell>
-				<cell row="1" col="4" status="free">A4</cell>
+				<cell row="1" col="3" status="occupied">A3</cell>
+				<cell row="1" col="4" status="occupied">A4</cell>
 				<cell row="1" col="6" status="free">A6</cell>
 				<cell row="2" col="2" status="occupied">B2</cell>
 				<cell row="2" col="3" status="occupied">B3</cell>
@@ -16,15 +16,7 @@
 				<cell row="5" col="6" status="free">E6</cell>
 			</grid>
 		</floor>
-		<floor level="0">
-			<grid rows="3" cols="4">
-				<cell row="1" col="1" status="occupied">A1</cell>
-				<cell row="1" col="2" status="free">A2</cell>
-				<cell row="2" col="3" status="free">B3</cell>
-				<cell row="3" col="3" status="occupied">C3</cell>
-			</grid>
-		</floor>
-		<floor level="-1">
+		<floor level="2">
 			<grid rows="3" cols="4">
 				<cell row="1" col="1" status="occupied">A1</cell>
 				<cell row="1" col="2" status="free">A2</cell>
