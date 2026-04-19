@@ -5,9 +5,12 @@
 	</head>
 	<body>
 		<h1>Otopark Katları</h1>
+		<div>
+		<a href="/">Geri Don</a>
+		</div>
 		{% for floor in floors %}
-			<a href="/floor/{{floor.level}}">
-				Kat {{floor.level}}
+			<a href="/otopark/{{ id }}/floor/{{ floor.level }}">
+    			Kat {{ floor.level }}
 			</a>
 			 - {{"%.2f"|format(floor.percentage_parking|float)}}% 
 			 <div class="progressbar">
@@ -19,3 +22,4 @@
 		{% endfor %}
 	</body>
 </html>
+

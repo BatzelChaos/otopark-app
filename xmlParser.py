@@ -20,45 +20,102 @@ def get_cells(node):
 		cells.extend(get_cells(child))
 	return cells
 	
+def get_otoparklar():
+    otoparklar = [
+        {"id": 1, "isim": "Ana Otopark", "dosya": "data1.xml"},
+        {"id": 2, "isim": "Merkez", "dosya": "data2.xml"},
+        {"id": 3, "isim": "AVM", "dosya": "data3.xml"},
+    ]
+
+    for otopark in otoparklar:
+        dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
+
+        try:
+            tree = ET.parse(dosya_yolu)
+            root = tree.getroot()
+
+            total_cells = 0
+            occupied = 0
+
+            for floor in root.findall("floor"):
+                grid_node = floor.find("grid")
+                data = parsenode(grid_node)
+                cells = get_cells(data)
+
+                total_cells += len(cells)
+                occupied += sum(1 for c in cells if c["attributes"].get("status") == "occupied")
+
+            percentage = (occupied / total_cells * 100) if total_cells > 0 else 0
+            otopark["doluluk"] = round(percentage, 2)
+
+        except:
+            otopark["doluluk"] = 0
+
+    return otoparklar
+
+
 @app.route("/")
-def home():
-	tree = ET.parse(r"example_otopark_data/data1.xml")
-	root = tree.getroot()
-	
-	floors_percentage_data = []
-	
-	for floor in root.findall("floor"):
-		level = floor.attrib.get("level")
-		grid_node=floor.find("grid")
-		data = parsenode(grid_node)
-		cells = get_cells(data)
-		
-		stats = stat_calculation(cells)
-		
-		floors_percentage_data.append({
-			"level":level,
-			"percentage_parking":stats["percentage_parking"],
-			"total_cells":stats["total_cells"]
-		})
-	return render_template("home.html", floors=floors_percentage_data)
+def otopark_listesi():
+    otoparklar = get_otoparklar()  
+    return render_template("otoparklar.html", otoparklar=otoparklar)
+
+@app.route("/otopark/<int:id>")
+def otopark_detay(id):
+    otoparklar = get_otoparklar()
+    otopark = next((o for o in otoparklar if o["id"] == id), None)
+
+    if not otopark:
+        return "Otopark bulunamadı", 404
+
+    dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
+    tree = ET.parse(dosya_yolu)
+    root = tree.getroot()
+
+    floors_percentage_data = []
+
+    for floor in root.findall("floor"):
+        level = floor.attrib.get("level")
+        grid_node = floor.find("grid")
+        data = parsenode(grid_node)
+        cells = get_cells(data)
+
+        stats = stat_calculation(cells)
+
+        floors_percentage_data.append({
+            "level": level,
+            "percentage_parking": stats["percentage_parking"],
+            "total_cells": stats["total_cells"]
+        })
+
+    return render_template("home.html", floors=floors_percentage_data, id=id)
 
 
-@app.route("/floor/<int:level>")
-def show_floor(level):
-	tree = ET.parse(r"example_otopark_data/data1.xml")
-	root = tree.getroot()
-	
-	floor = root.find(f"./floor[@level='{level}']")
-	if floor is None:
-		return "There is no such floor, friend!", 404
+@app.route("/otopark/<int:id>/floor/<int:level>")
+def show_floor(id, level):
 
-	grid_node = floor.find("grid")
-	data = parsenode(grid_node)
-	cells = get_cells(data)
-	
-	stats= stat_calculation(cells)
-	
-	return render_template("index.html", node=data, cells=cells, level=level, stats=stats)
+    otoparklar = get_otoparklar()
+    otopark = next((o for o in otoparklar if o["id"] == id), None)
+
+    if not otopark:
+        return "Otopark bulunamadı", 404
+
+    dosya_yolu = f"example_otopark_data/{otopark['dosya']}"
+    tree = ET.parse(dosya_yolu)
+    root = tree.getroot()
+
+    floor = root.find(f"./floor[@level='{level}']")
+    if floor is None:
+        return "Bu kat yok", 404
+
+    grid_node = floor.find("grid")
+    data = parsenode(grid_node)
+    cells = get_cells(data)
+    stats = stat_calculation(cells)
+
+    return render_template("index.html", node=data, cells=cells, level=level, stats=stats)
+
+
+
 def stat_calculation(cells):
 	total_cells = len(cells)
 	occupied = sum(1 for c in cells if c["attributes"].get("status") == "occupied")

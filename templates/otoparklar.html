@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Otopark Listesi</title>
+</head>
+<body>
+    <h1>Otopark Listesi</h1>
+
+    <ul>
+        {% for otopark in otoparklar %}
+            <li>
+                <a href="/otopark/{{ otopark.id }}">
+                    {{ otopark.isim }} - {{ otopark.doluluk }}%
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
