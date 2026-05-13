@@ -1,431 +1,288 @@
-# Otopark Projesi - Parking Lot Management System
+# 🅿️ Otopark Yönetim Sistemi
 
-Otopark Projesi, otoparkta boş ve dolu alanların yazılım aracılığıyla yönetilmesini sağlayan bir Python + Flask uygulamasıdır.
+Otoparkların doluluğunu gerçek zamanlı olarak takip edebilen, web arayüzü ile görselleştiren Flask tabanlı otopark yönetim sistemi.
 
-## 📋 Proje Amacı ve Kapsamı
+## 📌 Proje Özeti
 
-Bu projenin temel amacı, otoparklarda boş ve dolu alanların yazılım aracılığıyla belirlenmesini sağlayan bir sistem geliştirmektir. Günümüzde özellikle büyük şehirlerde araç sahipleri otoparklarda yer bulmakta zorlanmakta, bu da hem zaman kaybına hem de trafik yoğunluğuna yol açmaktadır.
+Bu sistem, otoparkların:
+- Park yerlerinin durumunu (dolu/boş) takip eder
+- Kat bazlı doluluk yüzdesini hesaplar  
+- Web arayüzü ile görselleştirir
+- Kolay navigasyon sağlar
 
-### Kapsam
-- **Veri Modelleri**: ParkAlani ve Otopark sınıfları
-- **Simülasyon**: Gerçekçi otopark operasyonlarını simüle etme
-- **Web API**: Flask ile REST API sağlanması
-- **Görselleştirme**: Otopark doluluk durumunun online takibi
+## 🎯 Özellikler
 
-## 🔧 Öncül Gereksinimler
+✅ Tüm otoparkları listeleme  
+✅ Otopark katlarını görüntüleme  
+✅ Kat detaylarını 2D grid olarak gösterme  
+✅ Park yerlerini renkli olarak kategorileme (Dolu: Kırmızı, Boş: Yeşil)  
+✅ Doluluk yüzdesini otomatik hesaplama  
+✅ Progress bar gösterimi  
 
-- Python 3.8+
-- Flask 2.3+
-- Temel Python bilgisi (sınıflar, listeler, sözlükler)
+## 🛠️ Kullanılan Teknolojiler
 
-## 📁 Dosya Yapısı
+| Teknoloji | Versiyon |
+|-----------|----------|
+| Python | 3.12.3 |
+| Flask | 2.3.2 |
+| HTML5 | - |
+| CSS3 | - |
+| XML | - |
+
+## 📦 Bağımlılıklar
 
 ```
-Otopark_Projesi/
-├── Otopark_Projesi.py      # Eski versiyon (başlangıç dosyası)
-├── models.py               # Veri modelleri (ParkAlani, Otopark)
-├── simulator.py            # Simülasyon sistemi
-├── app.py                  # Flask Web API
-├── requirements.txt        # Proje bağımlılıkları
-├── test_park_duration.py   # Park süresi testi
-└── README.md              # Bu dosya
+Flask==2.3.2
+Werkzeug==2.3.6
 ```
 
-## 🚀 Kurulum ve Başlangıç
+## 🚀 Hızlı Başlangıç
 
-### 1. Bağımlılıkları Yükle
+### 1️⃣ Sanal Ortamı Oluştur
 
 ```bash
-pip install -r requirements.txt
+cd /home/good_vibes/Desktop/otopark-app
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-### 2. Simülasyonu Test Et
+### 2️⃣ Bağımlılıkları Yükle
 
 ```bash
-python simulator.py
+pip3 install -r requirements.txt
 ```
 
-**Örnek Çıktı:**
-```
-✓ GİRİŞ: 34-ABC-1234 → Alan 5
-✓ GİRİŞ: 06-XYZ-5678 → Alan 12
-✓ ÇIKIS: 34-ABC-1234 ← Alan 5 (2.5 dk)
-```
-
-### 3. Web API'sini Başlat
+### 3️⃣ Uygulamayı Başlat
 
 ```bash
-python app.py
+python3 xmlParser.py
 ```
 
 **Çıktı:**
 ```
-Otopark Web API Başlatılıyor
-Adres: http://127.0.0.1:5000
+ * Serving Flask app 'xmlParser'
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000
 ```
 
-Tarayıcınızı açıp `http://127.0.0.1:5000` adresine gidin.
+### 4️⃣ Tarayıcıda Aç
 
-## 📚 API Endpoints
+- **Ana Sayfa:** http://127.0.0.1:5000/
+- **Otopark 1:** http://127.0.0.1:5000/otopark/1
+- **Otopark 1, Kat 1:** http://127.0.0.1:5000/otopark/1/floor/1
 
-### 1. Otopark Durumunu Göster
-**GET** `/api/durum`
+## 📁 Dosya Yapısı
 
-Otoparkın genel durumunu döndürür.
-
-**Örnek Cevap:**
-```json
-{
-  "otopark_adi": "Çankırı Merkez Otopark",
-  "toplam_kapasite": 30,
-  "dolu_alan": 5,
-  "bos_alan": 25,
-  "doluluk_orani": "16.67%",
-  "zamanstampa": "2025-02-28 10:30:45"
-}
+```
+otopark-app/
+├── xmlParser.py                     # Ana Flask uygulaması
+├── templates/
+│   ├── otoparklar.html             # Otopark listesi sayfası
+│   ├── home.html                   # Kat listesi sayfası
+│   └── index.html                  # Kat detayları sayfası
+├── static/
+│   └── styles.css                  # CSS stilleri
+├── example_otopark_data/
+│   ├── data1.xml                   # Ana Otopark verileri
+│   ├── data2.xml                   # Merkez Otopark verileri
+│   └── data3.xml                   # AVM Otopark verileri
+├── requirements.txt                # Bağımlılıklar
+├── README.md                       # Bu dosya
+├── KOD_ACIKLAMASI.md              # Detaylı kod açıklaması
+└── SONUC_RAPORU.md                # Proje sonuç raporu
 ```
 
----
+## 🗂️ Veri Yapısı (XML Format)
 
-### 2. Otoparkta Bulunan Araçları Listele
-**GET** `/api/araclar`
+### Örnek XML Dosyası
 
-Otoparkta bulunan tüm araçları listeler.
-
-**Örnek Cevap:**
-```json
-{
-  "toplam": 3,
-  "araclar": [
-    {
-      "plaka": "34-ABC-1234",
-      "alan_id": 5,
-      "giris_zamani": "2025-02-28 10:20:15"
-    },
-    {
-      "plaka": "06-XYZ-5678",
-      "alan_id": 12,
-      "giris_zamani": "2025-02-28 10:25:30"
-    }
-  ]
-}
+```xml
+<parking>
+    <floor level="1">
+        <grid cols="5" rows="5">
+            <cell col="1" row="1" status="free">A1</cell>
+            <cell col="2" row="1" status="occupied">A2</cell>
+            <cell col="3" row="1" status="free">A3</cell>
+            <!-- ... -->
+        </grid>
+    </floor>
+    <floor level="2">
+        <!-- ... -->
+    </floor>
+</parking>
 ```
 
----
+### XML Parametreleri
 
-### 3. Tüm Alan Durumlarını Göster
-**GET** `/api/alanlar`
+| Parametre | Açıklama | Örnek |
+|-----------|----------|-------|
+| `level` | Kat numarası | 1, 2, 3 |
+| `cols` | Kolon sayısı | 5 |
+| `rows` | Satır sayısı | 5 |
+| `col` | Hücrenin kolon pozisyonu | 1-5 |
+| `row` | Hücrenin satır pozisyonu | 1-5 |
+| `status` | Park durumu | "free" / "occupied" |
 
-Tüm park alanlarının detaylı durumunu döndürür.
+## 🌐 Web Arayüzü
 
-**Örnek Cevap:**
-```json
-{
-  "otopark": "Çankırı Merkez Otopark",
-  "toplam_kapasite": 30,
-  "alanlar": {
-    "1": {
-      "alan_id": 1,
-      "konum": "Alan-1",
-      "durum": "boş",
-      "arac_plakasi": null,
-      "giris_zamani": null
-    },
-    "5": {
-      "alan_id": 5,
-      "konum": "Alan-5",
-      "durum": "dolu",
-      "arac_plakasi": "34-ABC-1234",
-      "giris_zamani": "2025-02-28 10:20:15"
-    }
-  }
-}
+### Sayfalar
+
+#### 1. Ana Sayfa (http://127.0.0.1:5000/)
+- Tüm otoparkları liste halinde gösterir
+- Her otopark için doluluğu yüzde ve progress bar ile gösterir
+- Otoparka tıklayarak detaylara gitme imkânı
+
+#### 2. Otopark Detayları (http://127.0.0.1:5000/otopark/1)
+- Seçilen otoparktaki tüm katları gösterir
+- Her katın doluluğunu yüzde ile gösterir
+- Katların ortalamasını progress bar ile gösterir
+
+#### 3. Kat Detayları (http://127.0.0.1:5000/otopark/1/floor/1)
+- Seçilen katın park yerlerini 2D grid olarak gösterir
+- Dolu parkları kırmızı, boş parkları yeşil renkle gösterir
+- Park yeri adlarını (A1, A2, vb.) gösterir
+- Kat istatistiklerini gösterir
+
+## 🎨 Renkler ve Gösterim
+
+| Durum | Renk | Anlamı |
+|-------|------|--------|
+| Boş Park | 🟢 Yeşil | Park yeri kullanılabilir |
+| Dolu Park | 🔴 Kırmızı | Park yeri meşgul |
+| Progress Bar Dolgu | 🔴 Kırmızı | Dolu alan oranı |
+| Progress Bar Arka | 🟢 Yeşil | Boş alan oranı |
+
+## 💻 Kod Yapısı
+
+### Ana Modüller
+
+#### `xmlParser.py`
+
+**Fonksiyonlar:**
+- `parsenode(node)`: XML düğümünü sözlüğe çevir
+- `get_cells(node)`: Tüm park yerlerini bul
+- `stat_calculation(cells)`: Doluluk yüzdesini hesapla
+- `get_floors(root)`: Tüm katların bilgisini topla
+- `get_otoparklar()`: Tüm otoparkların bilgisini al
+
+**Routes (URL Yolları):**
+- `GET /`: Otopark listesi
+- `GET /otopark/<id>`: Otopark katları
+- `GET /otopark/<id>/floor/<level>`: Kat detayları
+
+### Şablonlar (Templates)
+
+- `otoparklar.html`: Jinja2 döngüsü ile dinamik liste
+- `home.html`: Kat listesi ve progress bar gösterimi
+- `index.html`: CSS Grid kullanarak 2D park düzeni
+
+### Stil (CSS)
+
+- `styles.css`: Responsive tasarım ve grid layout
+
+## 🔍 Veri İşlem Akışı
+
+```
+1. Kullanıcı Ana Sayfa'ya Gider
+   ↓
+2. get_otoparklar() tüm XML dosyaları okur
+   ↓
+3. Her otopark için doluluğu hesaplar
+   ↓
+4. otoparklar.html'de gösterir
+   ↓
+5. Kullanıcı Otopark'a Tıklar
+   ↓
+6. get_floors() seçilen otopark verilerini okur
+   ↓
+7. Her kat için istatistik hesaplar
+   ↓
+8. home.html'de katları gösterir
+   ↓
+9. Kullanıcı Kat'a Tıklar
+   ↓
+10. show_floor() kat verilerini işler
+    ↓
+11. index.html'de 2D grid gösterir
 ```
 
----
+## 🧪 Test Sonuçları
 
-### 4. Araç Otoparka Entrada
-**POST** `/api/arac/gir`
+| Test | Durum |
+|------|-------|
+| XML Parsing | ✅ Başarılı |
+| Flask Başlatma | ✅ Başarılı |
+| Ana Sayfa | ✅ Çalışıyor |
+| Otopark Detayları | ✅ Çalışıyor |
+| Kat Detayları | ✅ Çalışıyor |
+| CSS Stili | ✅ Uygulanıyor |
 
-Araç otoparka girer.
+## ⚙️ Sistem Gereksinimleri
 
-**İstek Body:**
-```json
-{
-  "plaka": "34-ABC-1234",
-  "tercih_edilen_alan": 5
-}
-```
+- **İşletim Sistemi:** Linux, Windows, macOS
+- **Python Versiyonu:** 3.8+
+- **Bellek:** Minimum 256MB
+- **Disk Alanı:** 50MB
 
-**Başarılı Cevap (200):**
-```json
-{
-  "basarili": true,
-  "plaka": "34-ABC-1234",
-  "alan_id": 5,
-  "mesaj": "Araç 34-ABC-1234 5. alana başarıyla park edildi.",
-  "otopark_durumu": {
-    "otopark_adi": "Çankırı Merkez Otopark",
-    "toplam_kapasite": 30,
-    "dolu_alan": 6,
-    "bos_alan": 24,
-    "doluluk_orani": "20.00%",
-    "zamanstampa": "2025-02-28 10:35:20"
-  }
-}
-```
+## 🐛 Hata Ayıklama
 
-**Başarısız Cevap (400):**
-```json
-{
-  "basarili": false,
-  "mesaj": "Otopark dolu. Boş alan bulunamadı.",
-  "otopark_durumu": { ... }
-}
-```
-
----
-
-### 5. Araç Otoparktan Çıkması
-**POST** `/api/arac/cik`
-
-Araç otoparktan çıkar.
-
-**İstek Body:**
-```json
-{
-  "plaka": "34-ABC-1234"
-}
-```
-
-**Başarılı Cevap (200):**
-```json
-{
-  "basarili": true,
-  "plaka": "34-ABC-1234",
-  "alan_id": 5,
-  "park_suresi_dakika": 15.5,
-  "mesaj": "Araç 34-ABC-1234 otoparktan çıkarıldı. Park süresi: 15.50 dakika.",
-  "otopark_durumu": {
-    "otopark_adi": "Çankırı Merkez Otopark",
-    "toplam_kapasite": 30,
-    "dolu_alan": 5,
-    "bos_alan": 25,
-    "doluluk_orani": "16.67%",
-    "zamanstampa": "2025-02-28 10:50:35"
-  }
-}
-```
-
----
-
-### 6. Belirli Bir Alanın Durumunu Göster
-**GET** `/api/alanlar/<alan_id>`
-
-Belirli bir alanın detaylı durumunu döndürür.
-
-**Örnek:** `GET /api/alanlar/5`
-
-**Cevap:**
-```json
-{
-  "basarili": true,
-  "alan": {
-    "alan_id": 5,
-    "konum": "Alan-5",
-    "durum": "dolu",
-    "arac_plakasi": "34-ABC-1234",
-    "giris_zamani": "2025-02-28 10:20:15"
-  }
-}
-```
-
----
-
-### 7. İstatistikleri Göster
-**GET** `/api/istatistikler`
-
-Sistem istatistiklerini döndürür.
-
-**Cevap:**
-```json
-{
-  "otopark_adi": "Çankırı Merkez Otopark",
-  "toplam_kapasite": 30,
-  "dolu_alan_sayisi": 5,
-  "bos_alan_sayisi": 25,
-  "doluluk_orani_yuzde": 16.67,
-  "otoparkta_arac_sayisi": 5,
-  "sorgulama_zamani": "2025-02-28 10:55:00"
-}
-```
-
-## 🧪 Kod Örnekleri
-
-### Örnek 1: Temel Kullanım (Python)
-
-```python
-from models import Otopark
-
-# Otopark oluştur
-otopark = Otopark("Çankırı Merkez Otopark", 30)
-
-# Araç ekle
-basarili, alan_id, mesaj = otopark.arac_ekle("34-ABC-1234")
-print(mesaj)  # Araç 34-ABC-1234 5. alana park edildi.
-
-# Otopark durumunu göster
-print(otopark.otopark_durumu())
-
-# Araç çıkar
-basarili, alan_id, sure, mesaj = otopark.arac_cikar("34-ABC-1234")
-print(mesaj)  # Araç 34-ABC-1234 otoparktan çıkarıldı. Park süresi: 2.50 dakika.
-```
-
-### Örnek 2: Simülasyon (Python)
-
-```python
-from models import Otopark
-from simulator import OtoparkSimulatoru
-
-# Otopark ve simülatör oluştur
-otopark = Otopark("Çankırı Merkez Otopark", 30)
-simulatoru = OtoparkSimulatoru(otopark)
-
-# 10 giriş, 3 çıkış simüle et
-simulatoru.hizli_simulasyon(giris_sayisi=10, cikis_sayisi=3)
-```
-
-### Örnek 3: API ile Kullanım (cURL)
-
+### Sorun: "Flask import bulunamadı"
 ```bash
-# Durum kontrol et
-curl http://127.0.0.1:5000/api/durum
-
-# Araç gir
-curl -X POST http://127.0.0.1:5000/api/arac/gir \
-  -H "Content-Type: application/json" \
-  -d '{"plaka": "34-ABC-1234", "tercih_edilen_alan": 5}'
-
-# Araç çıkar
-curl -X POST http://127.0.0.1:5000/api/arac/cik \
-  -H "Content-Type: application/json" \
-  -d '{"plaka": "34-ABC-1234"}'
-
-# Araçları listele
-curl http://127.0.0.1:5000/api/araclar
+# Sanal ortamı etkinleştir
+source venv/bin/activate
+# Yeniden kur
+pip3 install -r requirements.txt
 ```
 
-## 📊 Sınıf Diyagramı
+### Sorun: "XML dosyası bulunamadı"
+- `example_otopark_data/` klasörünün bulunduğunu kontrol et
+- XML dosyalarının adlarını kontrol et
 
-```
-┌─────────────────────────┐
-│      AlanDurumu(Enum)   │
-├─────────────────────────┤
-│ BOS                     │
-│ DOLU                    │
-│ BAKIMDA                 │
-└─────────────────────────┘
-           △
-           │
-           │
-┌─────────────────────────┐
-│     ParkAlani           │
-├─────────────────────────┤
-│ - alan_id               │
-│ - konum                 │
-│ - durum                 │
-│ - arac_plakasi          │
-│ - giris_zamani          │
-├─────────────────────────┤
-│ + arac_park_et()        │
-│ + arac_cikar()          │
-│ + bakima_al()           │
-│ + durum_kontrol()       │
-└─────────────────────────┘
-           △
-           │ contains
-           │ many
-┌─────────────────────────┐
-│      Otopark            │
-├─────────────────────────┤
-│ - otopark_adi           │
-│ - toplam_kapasite       │
-│ - alanlar               │
-│ - arac_gecmisi          │
-├─────────────────────────┤
-│ + arac_ekle()           │
-│ + arac_cikar()           │
-│ + bos_alan_sayisi()     │
-│ + dolu_alan_sayisi()    │
-│ + doluluk_orani()       │
-│ + araclari_listele()    │
-│ + otopark_durumu()      │
-└─────────────────────────┘
-           △
-           │ uses
-           │
-┌─────────────────────────┐
-│  OtoparkSimulatoru      │
-├─────────────────────────┤
-│ - otopark               │
-│ - plakalar              │
-│ - simülasyon_gecmisi    │
-├─────────────────────────┤
-│ + rastgele_giris_olay() │
-│ + rastgele_cikis_olay() │
-│ + hizli_simulasyon()    │
-│ + rapor_yazdir()        │
-└─────────────────────────┘
+### Sorun: "Port 5000 kullanımda"
+```bash
+# Farklı portta çalıştır
+python3 -c "from xmlParser import app; app.run(port=5001)"
 ```
 
-## 🎯 Görev Dağılımı (4 Kişi için)
+## 📚 Belgeleme
 
-| Görev | Kişi | Açıklama |
-|-------|------|----------|
-| **Planlama** | Proje Yöneticisi | Proje amacı, kapsam, gereksinim analizi |
-| **Tasarım** | Tasarımcı | Veri yapıları, UML diyagramları, akış şemaları |
-| **Back-End** | Backend Geliştirici | Python kodları, API, simülasyon |
-| **Front-End & Sunum** | Frontend Geliştirici | Web arayüzü, dokümantasyon, demo |
+Detaylı kod açıklaması için: [KOD_ACIKLAMASI.md](KOD_ACIKLAMASI.md)  
+Proje sonuç raporu için: [SONUC_RAPORU.md](SONUC_RAPORU.md)
 
-## 📝 Kodlama Standartları
+## 🎓 Eğitim Amaçlı Kullanım
 
-- **Isimlendirme**: snake_case (değişkenler), PascalCase (sınıflar)
-- **Yorum**: Tüm fonksiyonlar için docstring kullanılmalı
-- **Satır Uzunluğu**: Maksimum 100 karakter
-- **Girintiler**: 4 boşluk
+Bu proje aşağıdaki konuların öğrenilmesi için uygundur:
+- Flask web framework'ü
+- XML parsing
+- HTML/CSS/Jinja2 şablonları
+- RESTful API tasarımı
+- Python OOP
 
-## 🐛 Hata Giderme
+## 📈 Gelecek İyileştirmeler
 
-### Problem: "ModuleNotFoundError: No module named 'flask'"
-**Çözüm:** `pip install -r requirements.txt` komutunu çalıştırın
+- [ ] Veritabanı entegrasyonu
+- [ ] Gerçek zamanlı güncellemeler (WebSocket)
+- [ ] Kullanıcı kimlik doğrulaması
+- [ ] İstatistiksel raporlar
+- [ ] Mobil uygulaması
+- [ ] Docker containerization
 
-### Problem: "Address already in use" hatası
-**Çözüm:** Önceki Flask sunucusunu kapatın veya farklı bir port kullanın:
-```python
-app.run(port=5001)
-```
+## 👥 Grup Üyeleri
 
-### Problem: Araç ekleme başarısız
-**Çözüm:** Otoparkın dolu olup olmadığını kontrol edin:
-```python
-print(otopark.bos_alan_sayisi())  # Kaç boş alan kaldığını göster
-```
-
-## 🔮 Gelecek Özellikler
-
-- [ ] Veritabanı entegrasyonu (SQLite/PostgreSQL)
-- [ ] Web arayüzü (HTML/CSS/JavaScript)
-- [ ] Fatura sistemi (ücretlendirme)
-- [ ] Gerçek zamanlı bildirimler (WebSocket)
-- [ ] Mobil uygulama (iOS/Android)
+- **Erenalp Demir** - Rapor Lideri, Grup Yöneticisi
+- **Fatih Kerem Arslan** - Geliştirici
+- **Kadir Umut Akbaş** - Grup Üyesi
 
 ## 📄 Lisans
 
-Bu proje eğitim amaçlı oluşturulmuştur.
+Bu proje Yazılım Mühendisliği dönem ödevi olarak geliştirilmiştir.
 
-## 👥 Yazarlar
-Erenalp Demir
-Fatih Kerem Arslan
-Kadir Umut Akbaş
+## 📞 Destek ve İletişim
+
+Sorular veya öneriler için lütfen proje repositorısine issue açınız.
+
 ---
+
+**Son Güncelleme:** 13 Mayıs 2026  
+**Versiyon:** 1.0 (Nihai)  
+**Durum:** ✅ Üretim Hazır

@@ -20,6 +20,17 @@ def get_cells(node):
 		cells.extend(get_cells(child))
 	return cells
 
+def stat_calculation(cells):
+	"""Hücrelerin istatistiklerini hesapla"""
+	total_cells = len(cells)
+	occupied = sum(1 for c in cells if c["attributes"].get("status") == "occupied")
+	percentage_parking = (occupied / total_cells * 100) if total_cells > 0 else 0
+	return {
+		"total_cells": total_cells,
+		"occupied": occupied,
+		"percentage_parking": percentage_parking
+	}
+
 def get_floors(root):
 	floors = []
 	for floor in root.findall("floor"):
@@ -123,17 +134,5 @@ def show_floor(id, level):
 
 	return render_template("index.html", node=data, cells=cells, level=level, stats=stats, otopark=otopark)
 
-
-
-def stat_calculation(cells):
-	total_cells = len(cells)
-	occupied = sum(1 for c in cells if c["attributes"].get("status") == "occupied")
-	#free = sum(1 for c in cells if c["attributes"].get("status") == "free")
-	
-	percentage_parking = (occupied/total_cells*100) if total_cells > 0 else 0 
-	return {
-		"percentage_parking":percentage_parking,
-		"total_cells":total_cells
-	}
-
-app.run(debug=False)
+if __name__ == "__main__":
+	app.run(debug=False)
