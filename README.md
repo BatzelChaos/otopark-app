@@ -208,14 +208,14 @@ otopark-app/
 
 ## 🧪 Test Sonuçları
 
-| Test | Durum |
-|------|-------|
-| XML Parsing | ✅ Başarılı |
-| Flask Başlatma | ✅ Başarılı |
-| Ana Sayfa | ✅ Çalışıyor |
-| Otopark Detayları | ✅ Çalışıyor |
-| Kat Detayları | ✅ Çalışıyor |
-| CSS Stili | ✅ Uygulanıyor |
+| Test |
+|------|
+| XML Parsing |
+| Flask Başlatma |
+| Ana Sayfa |
+| Otopark Detayları |
+| Kat Detayları |
+| CSS Stili |
 
 ## ⚙️ Sistem Gereksinimleri
 
@@ -269,9 +269,9 @@ Bu proje aşağıdaki konuların öğrenilmesi için uygundur:
 
 ## 👥 Grup Üyeleri
 
-- **Erenalp Demir** - Rapor Lideri, Grup Yöneticisi
-- **Fatih Kerem Arslan** - Geliştirici
-- **Kadir Umut Akbaş** - Grup Üyesi
+- **Erenalp Demir** - Rapor Lideri (Yazar), Güncel README.md (Yazar), Eski Backend ve Grup Yöneticisi
+- **Fatih Kerem Arslan** - Frontend ve Backend
+- **Kadir Umut Akbaş** - Backend
 
 ## 📄 Lisans
 
@@ -285,4 +285,4 @@ Sorular veya öneriler için lütfen proje repositorısine issue açınız.
 
 **Son Güncelleme:** 13 Mayıs 2026  
 **Versiyon:** 1.0 (Nihai)  
-**Durum:** ✅ Üretim Hazır
+**Durum:** ✅ prototip hazır
