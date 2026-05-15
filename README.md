@@ -266,7 +266,7 @@ Bu proje aşağıdaki konuların öğrenilmesi için uygundur:
 - [ ] İstatistiksel raporlar
 - [ ] Mobil uygulaması
 - [ ] Docker containerization
-
+**not:** "Gelecek İyileştirmeler" prototip yaklaşımına uygun olmayıp Yazılım Mühendisliği Dönem Ödevi kapsamının tamamen dışındadır.
 ## 👥 Grup Üyeleri
 
 - **Erenalp Demir** - Rapor Lideri (Yazar), Güncel README.md (Yazar), Eski Backend ve Grup Yöneticisi
