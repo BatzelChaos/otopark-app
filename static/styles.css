@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  background: #f4f7fb;
+  color: #253238;
+  font-size:20px;
+}
+header {
+  background: linear-gradient(120deg, #04AA6D, #058457);
+  color: #fff;
+  padding: 60px 10px;
+  text-align: center;
+}
+
+body{
+	background-color: lightblue;	
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+}
+section h2 {
+  margin-top: 0;
+  color: #04AA6D;
+}
+footer {
+  padding: 24px;
+  text-align: center;
+  background: #e8edf4;
+  font-size: 0.9rem;
+}
+
+.cell {
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: lightblue;
+}
+
+.car
+{
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 18px;
+	width:90px;
+	height:70px;
+	clip-path: polygon(30% 15%, 30% 20%, 25% 20%, 25% 35%, 30% 35%, 30% 65%, 25% 65%, 25% 80%, 30% 80%, 30% 85%,
+						70% 85%, 70% 80%, 75% 80%, 75% 65%, 70% 65%, 70% 35%, 75% 35%, 75% 20%, 70% 20%, 70% 15%);
+}
+
+.spot {
+	width: 70px;
+	height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.parkinglot {
+	display: grid;
+	grid-template-columns: repeat(var(--cols), 70px);
+	grid-template-rows: repeat(var(--rows),70px);
+	}
+
+.red { background:red; border-bottom-color:red; }
+.green { background:green; border-bottom-color:green; }
+
+.progressbar
+{
+	width: 100px;
+	height: 10px;
+	background: green;
+	
+}
+
+.progressbar_fill
+{
+	height: 100%;
+	width: 0%;
+	background: red;
+}

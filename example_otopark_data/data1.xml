@@ -1,30 +1,63 @@
 <root>
-	<floor1>
-		<A1>
-			TRUE
-		</A1>
-		<A2>
-			TRUE
-		</A2>
-		<B1>
-			FALSE
-		</B1>
-		<B2>
-			FALSE
-		</B2>
-	</floor1>
-	<floor2>
-		<A1>
-			TRUE
-		</A1>
-		<B2>
-			FALSE
-		</B2>
-		<B3>
-			TRUE
-		</B3>
-		<C1>
-			FALSE
-		</C1>
-	</floor2>
+    <otopark name="Merkez AVM Otoparkı">
+        <floor level="1">
+            <grid rows="5" cols="10">
+                <!-- Row A -->
+                <cell row="1" col="1" status="occupied">A1</cell>
+                <cell row="1" col="2" status="free">A2</cell>
+                <cell row="1" col="3" status="free">A3</cell>
+                <cell row="1" col="4" status="occupied">A4</cell>
+                <cell row="1" col="5" status="occupied">A5</cell>
+                <cell row="1" col="6" status="free">A6</cell>
+                <cell row="1" col="7" status="free">A7</cell>
+                <cell row="1" col="8" status="occupied">A8</cell>
+                <cell row="1" col="9" status="occupied">A9</cell>
+                <cell row="1" col="10" status="free">A10</cell>
+                <!-- Row B -->
+                <cell row="2" col="1" status="occupied">B1</cell>
+                <cell row="2" col="2" status="occupied">B2</cell>
+                <cell row="2" col="3" status="free">B3</cell>
+                <cell row="2" col="4" status="free">B4</cell>
+                <cell row="2" col="5" status="occupied">B5</cell>
+                <cell row="2" col="6" status="occupied">B6</cell>
+                <cell row="2" col="7" status="free">B7</cell>
+                <cell row="2" col="8" status="free">B8</cell>
+                <cell row="2" col="9" status="occupied">B9</cell>
+                <cell row="2" col="10" status="occupied">B10</cell>
+                <!-- Row C -->
+                <cell row="3" col="1" status="free">C1</cell>
+                <cell row="3" col="2" status="free">C2</cell>
+                <cell row="3" col="3" status="occupied">C3</cell>
+                <cell row="3" col="4" status="occupied">C4</cell>
+                <cell row="3" col="5" status="free">C5</cell>
+                <cell row="3" col="6" status="free">C6</cell>
+                <cell row="3" col="7" status="occupied">C7</cell>
+                <cell row="3" col="8" status="occupied">C8</cell>
+                <cell row="3" col="9" status="free">C9</cell>
+                <cell row="3" col="10" status="free">C10</cell>
+                <!-- Row D -->
+                <cell row="4" col="1" status="occupied">D1</cell>
+                <cell row="4" col="2" status="free">D2</cell>
+                <cell row="4" col="3" status="occupied">D3</cell>
+                <cell row="4" col="4" status="free">D4</cell>
+                <cell row="4" col="5" status="occupied">D5</cell>
+                <cell row="4" col="6" status="free">D6</cell>
+                <cell row="4" col="7" status="occupied">D7</cell>
+                <cell row="4" col="8" status="free">D8</cell>
+                <cell row="4" col="9" status="occupied">D9</cell>
+                <cell row="4" col="10" status="free">D10</cell>
+                <!-- Row E -->
+                <cell row="5" col="1" status="free">E1</cell>
+                <cell row="5" col="2" status="free">E2</cell>
+                <cell row="5" col="3" status="free">E3</cell>
+                <cell row="5" col="4" status="occupied">E4</cell>
+                <cell row="5" col="5" status="occupied">E5</cell>
+                <cell row="5" col="6" status="occupied">E6</cell>
+                <cell row="5" col="7" status="free">E7</cell>
+                <cell row="5" col="8" status="free">E8</cell>
+                <cell row="5" col="9" status="free">E9</cell>
+                <cell row="5" col="10" status="occupied">E10</cell>
+            </grid>
+        </floor>
+    </otopark>
 </root>

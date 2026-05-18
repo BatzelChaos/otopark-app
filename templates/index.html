@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+<body>
+
+	<h1>
+		OTOPARK A - KAT {{level}}
+	</h1>
+
+<div class="stats">
+	<a href="/otopark/{{ otopark.id }}">Geri Don</a>
+	<br>
+	<a href="/">Otopark Listesi</a>
+	<br>
+	<p>Toplam Park Sayisi: {{stats.total_cells}}</p>
+	<p>Park Dolulugu: {{stats.percentage_parking|round(2)}}%</p>
+</div>
+
+<div class="parkinglot" style="--cols:{{node.attributes.get('cols',5)|int}}; --rows:{{node.attributes.get('rows',5)|int}};">
+	{% for cell in cells %}
+		<div class="spot"
+			style="grid-row: {{ cell.attributes.row }};
+				grid-column: {{ cell.attributes.col }};">
+			
+			{% if cell.attributes.status == "occupied" %}
+				<div class="car red"> {{cell.value}} </div>
+			{% else %}
+				<div class="car green"> {{cell.value}} </div>
+			{% endif %}
+		</div>
+	{% endfor %}
+</div>
+</body>
+</html>
